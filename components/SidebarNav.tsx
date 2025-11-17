@@ -4,11 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const navItems = [
-  { href: '/', label: 'Builder Day in a Box' },
-  { 
-    href: '/builder-day-in-a-box/builder-culture-and-prototyping', 
-    label: 'Builder Culture & Prototyping' 
-  },
+  { href: '/', label: 'Builder Day in a Box' }
 ]
 
 const prototypingItems = [
@@ -26,6 +22,13 @@ const prototypingItems = [
   },
 ]
 
+const frameworkItems = [
+  { 
+    href: '/builder-day-in-a-box/ai-product-org-maturity-model', 
+    label: 'AI Product Org Maturity Model' 
+  },
+]
+
 export default function SidebarNav() {
   const pathname = usePathname()
 
@@ -36,32 +39,10 @@ export default function SidebarNav() {
   const renderNavItem = (item: { href: string; label: string }) => {
     const active = isActive(item.href)
     return (
-      <li key={item.href} style={{ marginBottom: '0.125rem', padding: '0 1rem' }}>
+      <li key={item.href} className="sidebar-nav__item">
         <Link
           href={item.href}
-          style={{
-            display: 'block',
-            padding: '0.5rem 0.75rem',
-            fontSize: '0.875rem',
-            color: active ? 'var(--text-primary)' : 'var(--text-secondary)',
-            textDecoration: 'none',
-            borderRadius: '6px',
-            background: active ? 'var(--bg-tertiary)' : 'transparent',
-            fontWeight: active ? 500 : 400,
-            transition: 'all 0.15s'
-          }}
-          onMouseEnter={(e) => {
-            if (!active) {
-              e.currentTarget.style.background = 'var(--bg-secondary)'
-              e.currentTarget.style.color = 'var(--text-primary)'
-            }
-          }}
-          onMouseLeave={(e) => {
-            if (!active) {
-              e.currentTarget.style.background = 'transparent'
-              e.currentTarget.style.color = 'var(--text-secondary)'
-            }
-          }}
+          className={`sidebar-nav__link${active ? ' is-active' : ''}`}
         >
           {item.label}
         </Link>
@@ -70,50 +51,58 @@ export default function SidebarNav() {
   }
 
   return (
-    <nav style={{
-      width: '240px',
-      height: '100vh',
-      position: 'fixed',
-      left: 0,
-      top: 0,
-      background: 'var(--bg-primary)',
-      borderRight: '1px solid var(--border)',
-      padding: '1.5rem 0',
-      overflowY: 'auto',
-      zIndex: 100
-    }}>
-      <div style={{ 
-        marginBottom: '1.5rem', 
-        padding: '0 1.5rem',
-        borderBottom: '1px solid var(--border)',
-        paddingBottom: '1.5rem'
-      }}>
-        <Link href="/" style={{
-          fontSize: '1rem',
-          fontWeight: 600,
-          color: 'var(--text-primary)',
-          textDecoration: 'none',
-          letterSpacing: '-0.01em'
-        }}>
-          Builder Day
-        </Link>
-      </div>
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+    <nav className="sidebar-nav">
+      <div style={{padding: '1.5rem 0'}}>
+        <div className="sidebar-nav__header">
+          <Link href="/" style={{
+            fontSize: '1rem',
+            fontWeight: 600,
+            color: 'var(--text-primary)',
+            textDecoration: 'none',
+            letterSpacing: '-0.01em'
+          }}>
+            Builder Day
+          </Link>
+        </div>
+        <ul className="sidebar-nav__list">
         {navItems.map(renderNavItem)}
         
-        <li style={{ marginTop: '1.5rem', marginBottom: '0.5rem', padding: '0 1.5rem' }}>
-          <div style={{
-            fontSize: '0.75rem',
-            fontWeight: 600,
-            color: 'var(--text-tertiary)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em'
-          }}>
-            Prototyping
-          </div>
-        </li>
+        <li className="sidebar-nav__section">Prototyping</li>
         {prototypingItems.map(renderNavItem)}
-      </ul>
+        
+        <li className="sidebar-nav__section">Frameworks</li>
+        {frameworkItems.map(renderNavItem)}
+        </ul>
+      </div>
+      <div style={{
+        marginTop: 'auto',
+        padding: '1.5rem',
+        paddingTop: '2rem',
+        borderTop: '1px solid var(--border)',
+        fontSize: '0.75rem',
+        color: 'var(--text-tertiary)',
+        textAlign: 'center'
+      }}>
+        <p style={{margin: 0, marginBottom: '0.5rem'}}>
+          Brought to you by
+        </p>
+        <a 
+          href="https://webflow.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="webflow-sidebar-link"
+          style={{
+            color: 'var(--text-secondary)',
+            textDecoration: 'none',
+            fontSize: '0.875rem',
+            fontWeight: 500,
+            transition: 'color 0.2s',
+            display: 'inline-block'
+          }}
+        >
+          Webflow
+        </a>
+      </div>
     </nav>
   )
 }

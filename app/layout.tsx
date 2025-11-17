@@ -86,6 +86,63 @@ export default function RootLayout({
             display: flex;
             min-height: 100vh;
           }
+          .sidebar-nav {
+            width: 240px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: var(--bg-primary);
+            border-right: 1px solid var(--border);
+            padding: 0;
+            overflow-y: auto;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+          }
+          .sidebar-nav__header {
+            margin-bottom: 1.5rem;
+            padding: 0 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+          }
+          .sidebar-nav__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+          .sidebar-nav__item {
+            margin-bottom: 0.125rem;
+            padding: 0 1rem;
+          }
+          .sidebar-nav__link {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.15s;
+          }
+          .sidebar-nav__link:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+          }
+          .sidebar-nav__link.is-active {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            font-weight: 500;
+          }
+          .sidebar-nav__section {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            padding: 0 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+          }
           .main-content {
             flex: 1;
             margin-left: 240px;
@@ -131,7 +188,6 @@ export default function RootLayout({
           }
           .section {
             padding: 4rem 0;
-            position: relative;
             min-height: 100vh;
           }
           .guide-content {
@@ -141,7 +197,6 @@ export default function RootLayout({
             max-width: 1400px;
             margin: 0 auto;
             align-items: start;
-            position: relative;
           }
           .guide-body {
             max-width: 800px;
@@ -193,20 +248,26 @@ export default function RootLayout({
             color: var(--text-secondary);
             margin-bottom: 0.75rem;
           }
-          .table-of-contents {
+          .toc-container {
             position: -webkit-sticky;
             position: sticky;
             top: 2rem;
             align-self: start;
+            width: 240px;
+            max-height: calc(100vh - 4rem);
+            height: fit-content;
+            z-index: 10;
+            will-change: transform;
+          }
+          .table-of-contents {
             background: var(--bg-primary);
             padding: 1rem 0;
             border: none;
-            max-height: calc(100vh - 4rem);
+            max-height: inherit;
             overflow-y: auto;
             overflow-x: hidden;
-            width: 240px;
-            z-index: 10;
-            height: fit-content;
+            width: 100%;
+            position: relative;
           }
           .table-of-contents h3 {
             font-size: 0.75rem;
@@ -224,6 +285,7 @@ export default function RootLayout({
             width: 2px;
             background: var(--border);
             border-radius: 1px;
+            height: calc(100% - 3rem);
           }
           .toc-progress-bar {
             position: absolute;
@@ -234,6 +296,7 @@ export default function RootLayout({
             transition: height 0.1s ease-out;
             min-height: 2px;
             border-radius: 1px;
+            will-change: height;
           }
           .table-of-contents ul {
             list-style: none;
@@ -241,6 +304,7 @@ export default function RootLayout({
             margin: 0;
             position: relative;
             padding-left: 1rem;
+            min-height: 100px;
           }
           .table-of-contents li {
             margin-bottom: 0.25rem;
@@ -461,6 +525,9 @@ export default function RootLayout({
             color: var(--accent-hover);
           }
           @media (max-width: 1024px) {
+            .app-layout {
+              flex-direction: column;
+            }
             .main-content {
               margin-left: 0;
             }
@@ -471,12 +538,58 @@ export default function RootLayout({
               grid-template-columns: 1fr;
               gap: 2rem;
             }
-            .table-of-contents {
+            .toc-container {
               position: relative;
               top: 0;
               max-height: none;
               width: 100%;
             }
+            .table-of-contents {
+              max-height: none;
+              width: 100%;
+            }
+            .sidebar-nav {
+              position: sticky;
+              top: 0;
+              width: 100%;
+              height: auto;
+              border-right: none;
+              border-bottom: 1px solid var(--border);
+              padding: 0;
+              overflow-y: visible;
+              overflow-x: auto;
+            }
+            .sidebar-nav > div:first-child {
+              padding: 1rem 1rem 0.5rem;
+            }
+            .sidebar-nav__header {
+              border-bottom: none;
+              padding: 0 0 0.75rem;
+              margin-bottom: 0.75rem;
+            }
+            .sidebar-nav > div:last-child {
+              display: none;
+            }
+            .sidebar-nav__list {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 0.5rem;
+            }
+            .sidebar-nav__item {
+              padding: 0;
+              margin: 0;
+            }
+            .sidebar-nav__section {
+              width: 100%;
+              padding: 0;
+              margin: 0.5rem 0 0;
+            }
+          }
+          .webflow-footer-link:hover {
+            color: var(--accent) !important;
+          }
+          .webflow-sidebar-link:hover {
+            color: var(--accent) !important;
           }
           @media (max-width: 768px) {
             .theme-toggle-container {
@@ -498,6 +611,17 @@ export default function RootLayout({
             .guide-section h3 {
               font-size: 1.25rem;
             }
+            .sidebar-nav__list {
+              flex-wrap: nowrap;
+              overflow-x: auto;
+            }
+            .sidebar-nav__item {
+              flex: 0 0 auto;
+            }
+            .sidebar-nav__section {
+              flex: 0 0 auto;
+              font-size: 0.7rem;
+            }
           }
         `}} />
         <ThemeProvider>
@@ -507,6 +631,31 @@ export default function RootLayout({
               <div className="content-wrapper">
                 {children}
               </div>
+              <footer style={{
+                marginTop: '4rem',
+                paddingTop: '2rem',
+                borderTop: '1px solid var(--border)',
+                textAlign: 'center',
+                fontSize: '0.875rem',
+                color: 'var(--text-tertiary)'
+              }}>
+                <p style={{margin: 0}}>
+                  Brought to you by{' '}
+                  <a 
+                    href="https://webflow.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="webflow-footer-link"
+                    style={{
+                      color: 'var(--text-secondary)',
+                      textDecoration: 'none',
+                      transition: 'color 0.2s'
+                    }}
+                  >
+                    Webflow
+                  </a>
+                </p>
+              </footer>
             </main>
           </div>
           <div className="theme-toggle-container">
