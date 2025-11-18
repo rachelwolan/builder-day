@@ -1,14 +1,3 @@
-import TableOfContents from '@/components/TableOfContents'
-
-const tocItems = [
-  { href: '#overview', label: '01 Overview' },
-  { href: '#common-themes', label: '02 Common Themes' },
-  { href: '#builder-day-enablement', label: '03 Builder Day 2.0 Enablement' },
-  { href: '#for-designers', label: '04 Cursor for Designers' },
-  { href: '#cursor-101', label: '05 Cursor 101 – Foundations' },
-  { href: '#cursor-201', label: '06 Cursor 201 – Advanced' },
-  { href: '#resources', label: '07 Related Resources' },
-]
 
 export default function CursorForDesigners() {
   return (
@@ -396,8 +385,6 @@ export default function CursorForDesigners() {
               </div>
             </section>
           </div>
-
-          <TableOfContents items={tocItems} />
         </div>
       </section>
     </>

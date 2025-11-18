@@ -68,12 +68,13 @@ export default function RootLayout({
             padding: 0;
             margin: 0;
           }
-          html, body {
+          html {
+            overflow-x: hidden;
+          }
+          body {
             max-width: 100vw;
             overflow-x: hidden;
             transition: background-color 0.2s, color 0.2s;
-          }
-          body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
               'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -191,16 +192,77 @@ export default function RootLayout({
             min-height: 100vh;
           }
           .guide-content {
-            display: grid;
-            grid-template-columns: 1fr 240px;
-            gap: 4rem;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            align-items: start;
+            padding: 0 2rem;
+            position: relative;
+            display: flex;
+            gap: 4rem;
           }
           .guide-body {
+            flex: 1;
             max-width: 800px;
             min-width: 0;
+          }
+          .table-of-contents {
+            width: 240px;
+            flex-shrink: 0;
+            align-self: flex-start;
+            padding-bottom: 2rem;
+          }
+          .table-of-contents h3 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            margin-top: 0;
+          }
+          .table-of-contents ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+          }
+          .table-of-contents li {
+            margin-bottom: 0;
+          }
+          .table-of-contents a {
+            display: block;
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+            margin-left: -1rem;
+            transition: all 0.15s;
+            line-height: 1.4;
+          }
+          .table-of-contents a:hover {
+            color: var(--text-primary);
+            border-left-color: var(--border-hover);
+          }
+          .table-of-contents a.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            font-weight: 500;
+          }
+          .toc-progress-container {
+            position: absolute;
+            left: -1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+          }
+          .toc-progress-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            background: var(--accent);
+            transition: height 0.1s linear;
           }
           .guide-section {
             margin-bottom: 4rem;
@@ -247,90 +309,6 @@ export default function RootLayout({
             line-height: 1.8;
             color: var(--text-secondary);
             margin-bottom: 0.75rem;
-          }
-          .toc-container {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 2rem;
-            align-self: start;
-            width: 240px;
-            max-height: calc(100vh - 4rem);
-            height: fit-content;
-            z-index: 10;
-            will-change: transform;
-          }
-          .table-of-contents {
-            background: var(--bg-primary);
-            padding: 1rem 0;
-            border: none;
-            max-height: inherit;
-            overflow-y: auto;
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-          }
-          .table-of-contents h3 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-          }
-          .toc-progress-container {
-            position: absolute;
-            left: 0;
-            top: 2.5rem;
-            bottom: 0.5rem;
-            width: 2px;
-            background: var(--border);
-            border-radius: 1px;
-            height: calc(100% - 3rem);
-          }
-          .toc-progress-bar {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2px;
-            background: var(--accent);
-            transition: height 0.1s ease-out;
-            min-height: 2px;
-            border-radius: 1px;
-            will-change: height;
-          }
-          .table-of-contents ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            position: relative;
-            padding-left: 1rem;
-            min-height: 100px;
-          }
-          .table-of-contents li {
-            margin-bottom: 0.25rem;
-            position: relative;
-          }
-          .table-of-contents a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            line-height: 1.6;
-            transition: color 0.15s;
-            display: block;
-            padding: 0.375rem 0.5rem;
-            border-radius: 4px;
-          }
-          .table-of-contents a:hover {
-            color: var(--text-primary);
-            background: var(--bg-secondary);
-          }
-          .table-of-contents a[href^="#"]:target,
-          .table-of-contents a.active {
-            color: var(--accent);
-            font-weight: 500;
-          }
-          .table-of-contents a[data-past="true"] {
-            color: var(--text-primary);
           }
           .goals-grid {
             display: grid;
@@ -535,18 +513,11 @@ export default function RootLayout({
               padding: 2rem;
             }
             .guide-content {
-              grid-template-columns: 1fr;
-              gap: 2rem;
-            }
-            .toc-container {
-              position: relative;
-              top: 0;
-              max-height: none;
-              width: 100%;
+              padding: 0 1rem;
+              flex-direction: column;
             }
             .table-of-contents {
-              max-height: none;
-              width: 100%;
+              display: none;
             }
             .sidebar-nav {
               position: sticky;

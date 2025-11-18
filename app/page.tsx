@@ -1,26 +1,28 @@
+"use client"
+
 import TableOfContents from '@/components/TableOfContents'
 
-const tocItems = [
-  { href: '#overview', label: '01 Overview' },
-  { href: '#goals', label: '02 Goals & Outcomes' },
-  { href: '#tracks', label: '03 Event Tracks' },
-  { href: '#schedule', label: '04 Event Schedule' },
-  { href: '#preparation', label: '05 Preparation' },
-  { href: '#awards', label: '06 Awards & Showcase' },
-  { href: '#success', label: '07 Measuring Success' },
-  { href: '#resources', label: '08 Resources & Templates' },
-]
-
 export default function Home() {
+  const tocItems = [
+    { href: '#overview', label: 'Overview' },
+    { href: '#goals', label: 'Goals & Outcomes' },
+    { href: '#tracks', label: 'Event Tracks' },
+    { href: '#schedule', label: 'Event Schedule' },
+    { href: '#preparation', label: 'Preparation' },
+    { href: '#awards', label: 'Awards & Showcase' },
+    { href: '#success', label: 'Measuring Success' },
+    { href: '#resources', label: 'Resources & Templates' },
+  ]
+
   return (
     <>
       <section className="hero">
         <div className="hero-tagline">Crafted for creators.</div>
         <h1>Builder Day in a Box</h1>
         <p className="hero-subtitle">
-          A complete guide to transforming your team into an AI-native organization. 
-          Empower your team to build, experiment, and learn together. Made for leaders 
-          and builders in Product Management, Product Design, Data Science, User Research 
+          A complete guide to transforming your team into an AI-native organization.
+          Empower your team to build, experiment, and learn together. Made for leaders
+          and builders in Product Management, Product Design, Data Science, User Research
           and Marketing teams.
         </p>
         <div style={{marginTop: '2rem', fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: '1.6'}}>
@@ -178,7 +180,8 @@ export default function Home() {
                     </ul>
                     <p>
                       <a href="/builder-day-in-a-box/figma-make-training">→ Figma Make</a> · 
-                      <a href="/builder-day-in-a-box/cursor-training"> Become 10x with Cursor</a>
+                      <a href="/builder-day-in-a-box/cursor"> Cursor</a> · 
+                      <a href="/builder-day-in-a-box/webflow-app-gen"> Webflow App Gen</a>
                     </p>
 
                     <h3 style={{marginTop: '3rem'}}>Pre-Work</h3>
@@ -305,7 +308,6 @@ export default function Home() {
                     </div>
               </section>
           </div>
-
           <TableOfContents items={tocItems} />
         </div>
       </section>

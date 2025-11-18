@@ -25,7 +25,7 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
 
     // Calculate progress based on scroll position through all sections
     const calculateProgress = () => {
-      const scrollPosition = window.scrollY + 100
+      const scrollPosition = window.scrollY + 120
       const firstSection = sections[0].element
       const lastSection = sections[sections.length - 1].element
       
@@ -43,53 +43,49 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
       }
     }
 
-    // Use Intersection Observer for more accurate detection
-    const observerOptions = {
-      rootMargin: '-100px 0px -60% 0px',
-      threshold: [0, 0.1, 0.25, 0.5, 0.75, 1]
+    // Find the active section based on scroll position
+    const findActiveSection = () => {
+      const scrollPosition = window.scrollY + 120 // Offset for header
+      let currentSection = sections[0]?.id || ''
+      
+      // Find the section that's currently in view or just passed
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const { id, element } = sections[i]
+        const elementTop = element.getBoundingClientRect().top + window.scrollY
+        
+        if (elementTop <= scrollPosition) {
+          currentSection = id
+          break
+        }
+      }
+      
+      setActiveId(currentSection)
     }
 
-    const visibleSections = new Map<string, number>()
+    // Use Intersection Observer for more accurate detection
+    const observerOptions = {
+      rootMargin: '-120px 0px -50% 0px', // Trigger when section is near top of viewport
+      threshold: [0, 0.25, 0.5, 0.75, 1]
+    }
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          visibleSections.set(entry.target.id, entry.intersectionRatio)
-        } else {
-          visibleSections.delete(entry.target.id)
-        }
-      })
-
-      // Find the section with the highest intersection ratio
+      // Find the section with the highest visibility ratio
       let maxRatio = 0
       let activeId = ''
 
-      visibleSections.forEach((ratio, id) => {
-        if (ratio > maxRatio) {
-          maxRatio = ratio
-          activeId = id
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+          maxRatio = entry.intersectionRatio
+          activeId = entry.target.id
         }
       })
 
-      // If we have a highly visible section, use it
+      // If we found a visible section, use it
       if (activeId && maxRatio > 0.1) {
         setActiveId(activeId)
       } else {
-        // Fallback: find section closest to scroll position
-        const scrollPosition = window.scrollY + 100
-        let currentSection = sections[0]?.id || ''
-        
-        for (let i = sections.length - 1; i >= 0; i--) {
-          const { id, element } = sections[i]
-          const elementTop = element.getBoundingClientRect().top + window.scrollY
-          
-          if (elementTop <= scrollPosition) {
-            currentSection = id
-            break
-          }
-        }
-        
-        setActiveId(currentSection)
+        // Fallback to scroll-based detection
+        findActiveSection()
       }
       
       // Always update progress
@@ -103,11 +99,12 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
       observer.observe(element)
     })
 
-    // Throttled scroll handler for progress updates
+    // Throttled scroll handler for active section and progress updates
     let ticking = false
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
+          findActiveSection()
           calculateProgress()
           ticking = false
         })
@@ -117,26 +114,14 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     
-    // Initial updates
-    calculateProgress()
-    
-    // Set initial active section
-    const scrollPosition = window.scrollY + 100
-    let currentSection = sections[0]?.id || ''
-    
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const { id, element } = sections[i]
-      const elementTop = element.getBoundingClientRect().top + window.scrollY
-      
-      if (elementTop <= scrollPosition) {
-        currentSection = id
-        break
-      }
-    }
-    
-    setActiveId(currentSection)
+    // Initial updates with a small delay to ensure DOM is ready
+    const initTimeout = setTimeout(() => {
+      findActiveSection()
+      calculateProgress()
+    }, 100)
 
     return () => {
+      clearTimeout(initTimeout)
       observer.disconnect()
       window.removeEventListener('scroll', handleScroll)
     }
@@ -150,48 +135,60 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
   const progressBarHeight = getProgressBarHeight()
 
   return (
-    <aside className="toc-container">
-      <nav className="table-of-contents">
-        <h3>Table of Contents</h3>
-        <div className="toc-progress-container">
-          <div 
-            className="toc-progress-bar" 
-            style={{ height: `${progressBarHeight}%` }}
-          />
-        </div>
-        <ul>
-          {items.map((item) => {
-            const id = item.href.replace('#', '')
-            const isActive = activeId === id
-            
-            return (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className={isActive ? 'active' : ''}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    const element = document.getElementById(id)
-                    if (element) {
-                      const offset = 100
-                      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-                      const offsetPosition = elementPosition - offset
+    <nav
+      className="table-of-contents"
+      style={{
+        position: 'sticky',
+        top: '2rem',
+        maxHeight: 'calc(100vh - 4rem)',
+        overflowY: 'auto',
+        alignSelf: 'flex-start'
+      }}
+    >
+      <h3>On this page</h3>
+      <div className="toc-progress-container">
+        <div
+          className="toc-progress-bar"
+          style={{ height: `${progressBarHeight}%` }}
+        />
+      </div>
+      <ul>
+        {items.map((item) => {
+          const id = item.href.replace('#', '')
+          const isActive = activeId === id
 
-                      window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                      })
-                      setActiveId(id)
-                    }
-                  }}
-                >
-                  {item.label}
-                </a>
-              </li>
-            )
-          })}
-        </ul>
-      </nav>
-    </aside>
+          return (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className={isActive ? 'active' : ''}
+                onClick={(e) => {
+                  e.preventDefault()
+                  console.log('Clicking TOC link:', id)
+                  const element = document.getElementById(id)
+                  console.log('Found element:', element)
+                  if (element) {
+                    const offset = 100
+                    const elementPosition = element.getBoundingClientRect().top + window.scrollY
+                    const offsetPosition = elementPosition - offset
+                    console.log('Scrolling to:', offsetPosition)
+
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    })
+                    setActiveId(id)
+                  } else {
+                    console.error('Element not found with ID:', id)
+                  }
+                }}
+              >
+                {item.label}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </nav>
   )
 }

@@ -1,10 +1,12 @@
+"use client"
+
 import TableOfContents from '@/components/TableOfContents'
 
 const tocItems = [
   { href: '#purpose', label: '01 Purpose' },
   { href: '#quick-summary', label: '02 Quick Summary' },
-  { href: '#what-is-make', label: '03 What is Figma Make?' },
-  { href: '#when-to-use', label: '04 When to Use It' },
+  { href: '#what-is-make', label: '03 What is Figma Make' },
+  { href: '#when-to-use', label: '04 When to use it' },
   { href: '#capabilities', label: '05 Current Capabilities' },
   { href: '#getting-started', label: '06 Getting Started' },
   { href: '#prompting', label: '07 Prompting & Guidelines' },
@@ -18,15 +20,49 @@ export default function FigmaMakeTraining() {
   return (
     <>
       <section className="hero">
-        <div className="hero-tagline">Crafted for creators.</div>
+        <div className="hero-tagline">Vibe Coding Beginners</div>
         <h1>Figma Make</h1>
         <p className="hero-subtitle">
           A practical guide to AI-assisted prototyping for Product Design, 
           Product Management, and Insights teams
         </p>
         <div style={{marginTop: '2rem', fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: '1.6'}}>
-          <strong>For:</strong> Product Management, Product Design, Data Science, and User Research Teams<br />
-          Last Updated: November, 2025
+          <strong>For:</strong> Product Management, Product Design, Data Science, and User Research Teams
+        </div>
+      </section>
+
+      {/* Video - Full width section */}
+      <section style={{padding: '0 2rem 4rem', width: '100%', maxWidth: '100vw'}}>
+        <div style={{
+          maxWidth: '1920px',
+          margin: '0 auto',
+          width: '100%'
+        }}>
+          <div style={{
+            position: 'relative',
+            paddingBottom: '56.25%',
+            height: 0,
+            overflow: 'hidden',
+            borderRadius: '12px',
+            backgroundColor: '#000',
+            marginBottom: '1rem',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+          }}>
+            <iframe
+              src="https://www.youtube.com/embed/LF-dUF-EYBs"
+              title="Figma Make Training Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                border: 'none'
+              }}
+            />
+          </div>
         </div>
       </section>
 
@@ -193,12 +229,6 @@ export default function FigmaMakeTraining() {
                 <li>If rules conflict, follow the most specific DS rule and clarify in prompt.</li>
               </ul>
 
-              <h3>Design System Links</h3>
-              <ul>
-                <li><a href="#" target="_blank" rel="noopener noreferrer">Design Tokens & Variables – DS Hub</a></li>
-                <li><a href="#" target="_blank" rel="noopener noreferrer">Component Library & Usage</a></li>
-                <li><a href="#" target="_blank" rel="noopener noreferrer">Accessibility Standards</a></li>
-              </ul>
             </section>
 
             <section id="collaboration" className="guide-section">

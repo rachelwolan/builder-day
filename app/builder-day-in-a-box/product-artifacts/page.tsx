@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function ProductArtifacts() {
   return (
     <main>
@@ -48,9 +50,9 @@ export default function ProductArtifacts() {
           <div className="guide-content">
             <nav className="table-of-contents">
               <div style={{marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid #e5e7eb'}}>
-                <a href="/" style={{color: '#4353ff', textDecoration: 'none', fontWeight: 500, fontSize: '0.9375rem'}}>
+                <Link href="/" style={{color: '#4353ff', textDecoration: 'none', fontWeight: 500, fontSize: '0.9375rem'}}>
                   ← Back to Builder Day in a Box
-                </a>
+                </Link>
               </div>
               <h3>Table of Contents</h3>
               <ul>

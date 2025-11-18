@@ -1,27 +1,29 @@
+"use client"
+
 import TableOfContents from '@/components/TableOfContents'
 import React from 'react'
 
-const tocItems = [
-  { href: '#overview', label: '01 Overview' },
-  { href: '#dimensions', label: '02 Core Dimensions' },
-  { href: '#maturity-levels', label: '03 Maturity Levels' },
-  { href: '#dimension-1', label: '04 Prototyping & Design Velocity' },
-  { href: '#dimension-2', label: '05 Data & Insights Automation' },
-  { href: '#dimension-3', label: '06 Tool Fluency & Infrastructure' },
-  { href: '#dimension-4', label: '07 Cross-Functional Builder Culture' },
-  { href: '#dimension-5', label: '08 Learning & Experimentation' },
-  { href: '#assessment', label: '09 Assessment Tool' },
-  { href: '#roadmap', label: '10 Roadmap' },
-]
-
 export default function AIProductOrgMaturityModel() {
+  const tocItems = [
+    { href: '#overview', label: 'Overview' },
+    { href: '#dimensions', label: 'Core Dimensions' },
+    { href: '#maturity-levels', label: 'Maturity Levels' },
+    { href: '#dimension-1', label: 'Prototyping & Design Velocity' },
+    { href: '#dimension-2', label: 'Data & Insights Automation' },
+    { href: '#dimension-3', label: 'Tool Fluency & Infrastructure' },
+    { href: '#dimension-4', label: 'Cross-Functional Builder Culture' },
+    { href: '#dimension-5', label: 'Learning & Experimentation' },
+    { href: '#assessment', label: 'Assessment Tool' },
+    { href: '#roadmap', label: 'Roadmap' },
+  ]
+
   return (
     <>
       <section className="hero">
         <div className="hero-tagline">Crafted for creators.</div>
-        <h1>AI Product Org Maturity Model (AIPOM)</h1>
+        <h1>AI-Native Evolution</h1>
         <p className="hero-subtitle">
-          A framework for AI-native product organizations. Assess and advance your capability 
+          A framework for AI-native product organizations. Assess and advance your capability
           to build, experiment, and learn using AI-powered tools.
         </p>
         <div style={{marginTop: '2rem', fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: '1.6'}}>
@@ -30,17 +32,16 @@ export default function AIProductOrgMaturityModel() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="guide-content">
-          {/* Maturity Model Matrix Infographic - Spans full width */}
-          <div style={{
-            gridColumn: '1 / -1',
-            marginBottom: '4rem',
-            overflowX: 'auto',
-            borderRadius: '12px',
-            border: '1px solid var(--border)',
-            background: 'var(--bg-primary)'
-          }}>
+      {/* Maturity Model Matrix Infographic - Full width */}
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto 4rem',
+        padding: '0 2rem',
+        overflowX: 'auto',
+        borderRadius: '12px',
+        border: '1px solid var(--border)',
+        background: 'var(--bg-primary)'
+      }}>
                 <div style={{
                   minWidth: '1000px',
                   display: 'grid',
@@ -58,8 +59,8 @@ export default function AIProductOrgMaturityModel() {
                     justifyContent: 'space-between',
                     borderRadius: '12px 12px 0 0'
                   }}>
-                    <div style={{fontSize: '1.25rem', fontWeight: 600}}>AI Product Org Maturity Model</div>
-                    <div style={{fontSize: '0.875rem', opacity: 0.9}}>AIPOM</div>
+                    <div style={{fontSize: '1.25rem', fontWeight: 600}}>AI-Native Evolution</div>
+                    <div style={{fontSize: '0.875rem', opacity: 0.9}}>A framework for AI-native product organizations</div>
                   </div>
 
                   {/* Dimension Header (empty top-left) */}
@@ -195,8 +196,10 @@ export default function AIProductOrgMaturityModel() {
                     </React.Fragment>
                   ))}
                 </div>
-              </div>
+      </div>
 
+      <section className="section">
+        <div className="guide-content">
           <div className="guide-body">
             <section id="overview" className="guide-section">
               <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>01</span>Overview</h2>

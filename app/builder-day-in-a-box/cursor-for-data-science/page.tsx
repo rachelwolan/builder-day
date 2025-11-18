@@ -1,14 +1,3 @@
-import TableOfContents from '@/components/TableOfContents'
-
-const tocItems = [
-  { href: '#overview', label: '01 Overview' },
-  { href: '#common-themes', label: '02 Common Themes' },
-  { href: '#builder-day-enablement', label: '03 Builder Day 2.0 Enablement' },
-  { href: '#data-science', label: '04 Accelerating Data Science' },
-  { href: '#cursor-101', label: '05 Cursor 101 – Foundations' },
-  { href: '#cursor-201', label: '06 Cursor 201 – Advanced' },
-  { href: '#resources', label: '07 Related Resources' },
-]
 
 export default function CursorForDataScience() {
   return (
@@ -391,8 +380,6 @@ export default function CursorForDataScience() {
               </div>
             </section>
           </div>
-
-          <TableOfContents items={tocItems} />
         </div>
       </section>
     </>

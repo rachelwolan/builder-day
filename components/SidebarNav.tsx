@@ -17,15 +17,19 @@ const prototypingItems = [
     label: 'Figma Make' 
   },
   { 
-    href: '/builder-day-in-a-box/cursor-training', 
-    label: 'Become 10x with Cursor' 
+    href: '/builder-day-in-a-box/cursor', 
+    label: 'Cursor' 
+  },
+  { 
+    href: '/builder-day-in-a-box/webflow-app-gen', 
+    label: 'Webflow App Gen' 
   },
 ]
 
 const frameworkItems = [
   { 
     href: '/builder-day-in-a-box/ai-product-org-maturity-model', 
-    label: 'AI Product Org Maturity Model' 
+    label: 'AI-Native Evolution' 
   },
 ]
 

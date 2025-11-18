@@ -274,6 +274,31 @@ body {
   font-weight: 500;
 }
 
+.toc-progress-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.toc-progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: height 0.1s ease-out;
+}
+
+.table-of-contents ul {
+  position: relative;
+  padding-left: 1rem;
+}
+
 /* Cards */
 .card {
   padding: 2rem;

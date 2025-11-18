@@ -1,9 +1,11 @@
-export default function CursorTraining() {
+"use client"
+
+export default function Cursor() {
   return (
     <>
       <section className="hero">
         <div className="hero-tagline">Crafted for creators.</div>
-        <h1>Cursor Training</h1>
+        <h1>Cursor</h1>
         <p className="hero-subtitle">
           A practical guide to AI-assisted development for Product Design, 
           Product Management, and Data Science teams

@@ -1,14 +1,16 @@
+"use client"
+
 import TableOfContents from '@/components/TableOfContents'
 
 const tocItems = [
   { href: '#overview', label: '01 Overview' },
   { href: '#what-is-prototype', label: '02 What Is a Prototype' },
   { href: '#why-prototype', label: '03 Why Prototyping Matters' },
-  { href: '#tools-expand', label: '04 Tools That Expand What\'s Possible' },
+  { href: '#tools-expand', label: '04 Tools That Expand' },
   { href: '#common-traps', label: '05 Common Traps to Avoid' },
   { href: '#choosing-fidelity', label: '06 Choosing the Right Fidelity' },
-  { href: '#review-prototypes', label: '07 How to Review Prototypes Effectively' },
-  { href: '#builder-mindset', label: '08 Encouraging a Builder Mindset' },
+  { href: '#review-prototypes', label: '07 How to Review Prototypes' },
+  { href: '#builder-mindset', label: '08 Builder Mindset' },
 ]
 
 export default function Prototyping101() {
@@ -22,50 +24,48 @@ export default function Prototyping101() {
           A practical guide to choosing the right prototype fidelity for your objectives 
           and creating artifacts that enable faster learning and better decision-making
         </p>
-        <div style={{marginTop: '2rem', fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: '1.6'}}>
-          Written By: Kev Wong, VP, Product and Content Design @ <a href="https://webflow.com" target="_blank" rel="noopener noreferrer" style={{color: 'var(--accent)'}}>Webflow</a><br />
-          Last Updated: November, 2025
+      </section>
+
+      {/* Video - Full width section */}
+      <section style={{padding: '0 2rem 4rem', width: '100%', maxWidth: '100vw'}}>
+        <div style={{
+          maxWidth: '1920px',
+          margin: '0 auto',
+          width: '100%'
+        }}>
+          <div style={{
+            position: 'relative',
+            paddingBottom: '56.25%',
+            height: 0,
+            overflow: 'hidden',
+            borderRadius: '12px',
+            backgroundColor: '#000',
+            marginBottom: '1rem',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+          }}>
+            <video
+              controls
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%'
+              }}
+            >
+              <source src="/building-collaborative-builder-culture-part1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p style={{fontSize: '0.875rem', color: 'var(--text-secondary)', textAlign: 'center'}}>
+            <strong>Video:</strong> Prototyping 101<br />
+            <strong>Featuring:</strong> Kev Wong, VP, Product and Content Design at <a href="https://webflow.com" target="_blank" rel="noopener noreferrer" style={{color: 'var(--accent)'}}>Webflow</a>
+          </p>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem'}}>
         <div className="guide-content">
-          {/* Video - Spans full width */}
-          <div style={{
-            gridColumn: '1 / -1',
-            maxWidth: '900px',
-            margin: '0 auto 4rem'
-          }}>
-            <div style={{
-              position: 'relative',
-              paddingBottom: '56.25%',
-              height: 0,
-              overflow: 'hidden',
-              borderRadius: '12px',
-              backgroundColor: '#000',
-              marginBottom: '1rem',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-            }}>
-              <video
-                controls
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%'
-                }}
-              >
-                <source src="/building-collaborative-builder-culture-part1.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <p style={{fontSize: '0.875rem', color: 'var(--text-secondary)', textAlign: 'center'}}>
-              <strong>Video:</strong> Building a Collaborative Builder Culture<br />
-              <strong>Featuring:</strong> Kev Wong, VP, Product and Content Design at <a href="https://webflow.com" target="_blank" rel="noopener noreferrer" style={{color: 'var(--accent)'}}>Webflow</a>
-            </p>
-          </div>
-
           <div className="guide-body">
             <section id="overview" className="guide-section">
               <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>01</span>Overview</h2>
@@ -79,7 +79,7 @@ export default function Prototyping101() {
             </section>
 
             <section id="what-is-prototype" className="guide-section">
-              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>02</span>💡 What Is a Prototype</h2>
+              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>02</span>What Is a Prototype</h2>
               <p>
                 A prototype is a quick, simplified version of a product or idea. It helps us test how something works or feels before building the real thing.
               </p>
@@ -94,7 +94,7 @@ export default function Prototyping101() {
             </section>
 
             <section id="why-prototype" className="guide-section">
-              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>03</span>🎯 Why Prototyping Matters</h2>
+              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>03</span>Why Prototyping Matters</h2>
               <p>
                 At its core, prototyping is about bringing ideas to life quickly.
               </p>
@@ -112,7 +112,7 @@ export default function Prototyping101() {
             </section>
 
             <section id="tools-expand" className="guide-section">
-              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>04</span>⚙️ Tools That Expand What&apos;s Possible</h2>
+              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>04</span>Tools That Expand What&apos;s Possible</h2>
               <p>
                 Designers now have access to a broader and more powerful toolkit, including Cursor, Figma Make, and emerging options like Claude Code.
               </p>
@@ -127,8 +127,44 @@ export default function Prototyping101() {
               </p>
             </section>
 
+            {/* Second Video - Above Common Traps */}
+            <div style={{
+              gridColumn: '1 / -1',
+              margin: '4rem 0',
+              maxWidth: '100%'
+            }}>
+              <div style={{
+                position: 'relative',
+                paddingBottom: '56.25%',
+                height: 0,
+                overflow: 'hidden',
+                borderRadius: '12px',
+                backgroundColor: '#000',
+                marginBottom: '1rem',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+              }}>
+                <video
+                  controls
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%'
+                  }}
+                  onLoadedMetadata={(e) => {
+                    const video = e.target as HTMLVideoElement;
+                    video.playbackRate = 1.25;
+                  }}
+                >
+                  <source src="/Thoughts on Prototyping with AI Tools.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+
             <section id="common-traps" className="guide-section">
-              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>05</span>⚠️ Common Traps to Avoid</h2>
+              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>05</span>Common Traps to Avoid</h2>
               <p>
                 As we use AI-assisted and high-fidelity prototyping tools, a few pitfalls are worth watching for:
               </p>
@@ -177,7 +213,7 @@ export default function Prototyping101() {
             </section>
 
             <section id="choosing-fidelity" className="guide-section">
-              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>06</span>🎨 Choosing the Right Fidelity</h2>
+              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>06</span>Choosing the Right Fidelity</h2>
               <p>
                 Think of fidelity as a dial you adjust based on what you need to learn and who your audience is. Start simple and increase fidelity only when needed.
               </p>
@@ -205,8 +241,8 @@ export default function Prototyping101() {
                       <td><strong>Design</strong></td>
                       <td>Medium to High</td>
                       <td>XFN teams</td>
-                      <td>Maintain momentum, gather feedback, and show progress</td>
-                      <td>Interactive flows updated frequently, often shared via Loom</td>
+                      <td>Maintain momentum, get specific feedback, show daily progress</td>
+                      <td>Interactive flows updated frequently with Loom recordings to express unbuilt ideas or to call for specific feedback or points of concern</td>
                     </tr>
                     <tr>
                       <td><strong>Build</strong></td>
@@ -220,7 +256,7 @@ export default function Prototyping101() {
               </div>
 
               <p style={{marginTop: '2rem'}}>
-                <strong>💡 Prototype to learn, not to impress.</strong>
+                <strong>Prototype to learn, not to impress.</strong>
               </p>
               <p>
                 Use high-fidelity prototypes to validate interoperability and Spring design patterns before committing engineering time.
@@ -228,7 +264,7 @@ export default function Prototyping101() {
             </section>
 
             <section id="review-prototypes" className="guide-section">
-              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>07</span>🧩 How to Review Prototypes Effectively</h2>
+              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>07</span>How to Review Prototypes Effectively</h2>
               <p>
                 When reviewing a prototype, match your feedback to the fidelity level.
               </p>
@@ -278,7 +314,7 @@ export default function Prototyping101() {
             </section>
 
             <section id="builder-mindset" className="guide-section">
-              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>08</span>🌱 Encouraging a Builder Mindset</h2>
+              <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>08</span>Encouraging a Builder Mindset</h2>
               <p>
                 Prototyping is a core part of how we learn, align, and collaborate.
               </p>
@@ -298,7 +334,6 @@ export default function Prototyping101() {
               </p>
             </section>
           </div>
-
           <TableOfContents items={tocItems} />
         </div>
       </section>

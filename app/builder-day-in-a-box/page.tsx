@@ -48,7 +48,10 @@ export default function BuilderDayInABox() {
                   <a href="/builder-day-in-a-box/building-builder-culture">Building a Builder Culture</a>
                 </li>
                 <li style={{marginLeft: '1rem'}}>
-                  <a href="/builder-day-in-a-box/cursor-training">Become 10x with Cursor</a>
+                  <a href="/builder-day-in-a-box/cursor">Cursor</a>
+                </li>
+                <li style={{marginLeft: '1rem'}}>
+                  <a href="/builder-day-in-a-box/webflow-app-gen">Webflow App Gen</a>
                 </li>
               </ul>
             </nav>
@@ -230,8 +233,8 @@ export default function BuilderDayInABox() {
                         → View Figma Make How-To Guide
                       </a>
                       <br />
-                      <a href="/builder-day-in-a-box/cursor-training" style={{color: '#4353ff', textDecoration: 'none', fontWeight: 500}}>
-                        → View Become 10x with Cursor Guide
+                      <a href="/builder-day-in-a-box/cursor" style={{color: '#4353ff', textDecoration: 'none', fontWeight: 500}}>
+                        → View Cursor Guide
                       </a>
                     </p>
                   </div>
@@ -418,9 +421,13 @@ export default function BuilderDayInABox() {
                     <h4>Building a Builder Culture</h4>
                     <p>Collaborative frameworks including Opportunity-Solution Alignment (OSA) and Prototyping 101 for product teams.</p>
                   </a>
-                  <a href="/builder-day-in-a-box/cursor-training" className="category-card" style={{textDecoration: 'none', display: 'block'}}>
-                    <h4>Become 10x with Cursor</h4>
+                  <a href="/builder-day-in-a-box/cursor" className="category-card" style={{textDecoration: 'none', display: 'block'}}>
+                    <h4>Cursor</h4>
                     <p>Learn how to use Cursor for AI-assisted development, from idea to working prototype in minutes.</p>
+                  </a>
+                  <a href="/builder-day-in-a-box/webflow-app-gen" className="category-card" style={{textDecoration: 'none', display: 'block'}}>
+                    <h4>Webflow App Gen</h4>
+                    <p>Coming soon: Learn how to use Webflow App Gen for rapid prototyping and app development.</p>
                   </a>
                 </div>
               </section>
