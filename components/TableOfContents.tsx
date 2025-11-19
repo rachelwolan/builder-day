@@ -13,7 +13,6 @@ interface TableOfContentsProps {
 
 export default function TableOfContents({ items }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>('')
-  const [progress, setProgress] = useState<number>(0)
 
   useEffect(() => {
     const sections = items.map((item) => {
@@ -22,26 +21,6 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
     }).filter((item) => item.element !== null) as Array<{ id: string; element: HTMLElement }>
 
     if (sections.length === 0) return
-
-    // Calculate progress based on scroll position through all sections
-    const calculateProgress = () => {
-      const scrollPosition = window.scrollY + 120
-      const firstSection = sections[0].element
-      const lastSection = sections[sections.length - 1].element
-      
-      if (firstSection && lastSection) {
-        const startPosition = firstSection.getBoundingClientRect().top + window.scrollY
-        const endPosition = lastSection.getBoundingClientRect().top + window.scrollY + lastSection.offsetHeight
-        const totalDistance = endPosition - startPosition
-        const scrolledDistance = Math.max(0, scrollPosition - startPosition)
-        
-        const calculatedProgress = totalDistance > 0 
-          ? Math.min(100, (scrolledDistance / totalDistance) * 100)
-          : 0
-        
-        setProgress(calculatedProgress)
-      }
-    }
 
     // Find the active section based on scroll position
     const findActiveSection = () => {
@@ -87,9 +66,6 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
         // Fallback to scroll-based detection
         findActiveSection()
       }
-      
-      // Always update progress
-      calculateProgress()
     }
 
     const observer = new IntersectionObserver(observerCallback, observerOptions)
@@ -99,13 +75,12 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
       observer.observe(element)
     })
 
-    // Throttled scroll handler for active section and progress updates
+    // Throttled scroll handler for active section updates
     let ticking = false
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           findActiveSection()
-          calculateProgress()
           ticking = false
         })
         ticking = true
@@ -117,7 +92,6 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
     // Initial updates with a small delay to ensure DOM is ready
     const initTimeout = setTimeout(() => {
       findActiveSection()
-      calculateProgress()
     }, 100)
 
     return () => {
@@ -127,68 +101,105 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
     }
   }, [items])
 
-  // Calculate progress bar position based on scroll progress through sections
-  const getProgressBarHeight = () => {
-    return progress
-  }
-
-  const progressBarHeight = getProgressBarHeight()
-
   return (
     <nav
-      className="table-of-contents"
+      className="table-of-contents-horizontal"
       style={{
-        position: 'sticky',
-        top: '2rem',
-        maxHeight: 'calc(100vh - 4rem)',
-        overflowY: 'auto',
-        alignSelf: 'flex-start'
+        width: '100%',
+        padding: '1.5rem 0',
+        borderTop: '1px solid var(--border-color, #e5e7eb)',
+        borderBottom: '1px solid var(--border-color, #e5e7eb)',
+        backgroundColor: 'var(--bg-primary, #ffffff)',
+        marginBottom: '2rem'
       }}
     >
-      <h3>On this page</h3>
-      <div className="toc-progress-container">
+      <div
+        style={{
+          maxWidth: '1400px',
+          margin: '0 auto',
+          padding: '0 2rem'
+        }}
+      >
         <div
-          className="toc-progress-bar"
-          style={{ height: `${progressBarHeight}%` }}
-        />
-      </div>
-      <ul>
-        {items.map((item) => {
-          const id = item.href.replace('#', '')
-          const isActive = activeId === id
+          style={{
+            fontSize: '0.75rem',
+            fontWeight: '600',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            color: 'var(--text-tertiary, #6b7280)',
+            marginBottom: '0.75rem'
+          }}
+        >
+          On this page
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            gap: '0.5rem',
+            overflowX: 'auto',
+            scrollbarWidth: 'thin',
+            WebkitOverflowScrolling: 'touch',
+            paddingBottom: '0.25rem'
+          }}
+        >
+          {items.map((item) => {
+            const id = item.href.replace('#', '')
+            const isActive = activeId === id
 
-          return (
-            <li key={item.href}>
+            return (
               <a
+                key={item.href}
                 href={item.href}
-                className={isActive ? 'active' : ''}
                 onClick={(e) => {
                   e.preventDefault()
-                  console.log('Clicking TOC link:', id)
                   const element = document.getElementById(id)
-                  console.log('Found element:', element)
                   if (element) {
                     const offset = 100
                     const elementPosition = element.getBoundingClientRect().top + window.scrollY
                     const offsetPosition = elementPosition - offset
-                    console.log('Scrolling to:', offsetPosition)
 
                     window.scrollTo({
                       top: offsetPosition,
                       behavior: 'smooth'
                     })
                     setActiveId(id)
-                  } else {
-                    console.error('Element not found with ID:', id)
+                  }
+                }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '0.5rem 1rem',
+                  fontSize: '0.875rem',
+                  fontWeight: '500',
+                  whiteSpace: 'nowrap',
+                  borderRadius: '9999px',
+                  border: isActive ? '2px solid var(--accent, #3b82f6)' : '1px solid var(--border-color, #e5e7eb)',
+                  backgroundColor: isActive ? 'var(--accent-bg, #eff6ff)' : 'transparent',
+                  color: isActive ? 'var(--accent, #3b82f6)' : 'var(--text-secondary, #4b5563)',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  flexShrink: 0
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.borderColor = 'var(--accent, #3b82f6)'
+                    e.currentTarget.style.backgroundColor = 'var(--accent-bg-hover, #dbeafe)'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.borderColor = 'var(--border-color, #e5e7eb)'
+                    e.currentTarget.style.backgroundColor = 'transparent'
                   }
                 }}
               >
                 {item.label}
               </a>
-            </li>
-          )
-        })}
-      </ul>
+            )
+          })}
+        </div>
+      </div>
     </nav>
   )
 }
