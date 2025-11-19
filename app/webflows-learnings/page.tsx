@@ -18,11 +18,10 @@ export default function WebflowsLearnings() {
   return (
     <>
       <section className="hero">
-        <div className="hero-tagline">🌟 Real feedback from real builders.</div>
+        <div className="hero-tagline">Learn from our learnings.</div>
         <h1>Webflow&apos;s Builder Day</h1>
         <p className="hero-subtitle">
-          Direct reflections from 42 participants in Builder Day 2.0, sharing their experiences
-          with AI-powered tools for prototyping, design, and data analysis
+          Direct reflections from 86 participants in Builder Day 2.0, sharing their experiences with AI-powered tools for prototyping, design, and data analysis.
         </p>
       </section>
 
@@ -33,7 +32,7 @@ export default function WebflowsLearnings() {
 
       <section className="section" style={{maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem'}}>
         <div className="guide-content">
-          <div className="guide-body">
+          <div style={{width: '100%'}}>
 
             {/* Summary Overview */}
             <section id="summary" className="guide-section">

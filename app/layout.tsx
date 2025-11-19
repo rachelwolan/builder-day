@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import SidebarNav from '@/components/SidebarNav'
-import ThemeToggle from '@/components/ThemeToggle'
 
 export const metadata: Metadata = {
   title: 'Builder Day in a Box',
   description: 'A complete guide to transforming your team into an AI-native organization',
+  icons: {
+    icon: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>',
+  },
 }
 
 export default function RootLayout({
@@ -87,6 +89,15 @@ export default function RootLayout({
             display: flex;
             min-height: 100vh;
           }
+          .mobile-header {
+            display: none;
+          }
+          .hamburger-button {
+            display: none;
+          }
+          .nav-overlay {
+            display: none;
+          }
           .sidebar-nav {
             width: 240px;
             height: 100vh;
@@ -144,6 +155,9 @@ export default function RootLayout({
             text-transform: uppercase;
             letter-spacing: 0.1em;
           }
+          .sidebar-nav__section:first-of-type {
+            margin-top: 0;
+          }
           .main-content {
             flex: 1;
             margin-left: 240px;
@@ -156,10 +170,7 @@ export default function RootLayout({
             padding: 2rem 4rem;
           }
           .theme-toggle-container {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 1000;
+            display: none;
           }
           .hero {
             padding: 4rem 0 6rem;
@@ -508,6 +519,7 @@ export default function RootLayout({
             }
             .main-content {
               margin-left: 0;
+              padding-top: 60px;
             }
             .content-wrapper {
               padding: 2rem;
@@ -519,41 +531,124 @@ export default function RootLayout({
             .table-of-contents {
               display: none;
             }
-            .sidebar-nav {
-              position: sticky;
+
+            /* Mobile Header */
+            .mobile-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              position: fixed;
               top: 0;
-              width: 100%;
-              height: auto;
-              border-right: none;
+              left: 0;
+              right: 0;
+              height: 60px;
+              padding: 0 1rem;
+              background: var(--bg-primary);
               border-bottom: 1px solid var(--border);
+              z-index: 300;
+            }
+            .mobile-header__logo {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              font-size: 1rem;
+              font-weight: 600;
+              color: var(--text-primary);
+              text-decoration: none;
+              letter-spacing: -0.01em;
+            }
+
+            /* Hamburger Button */
+            .hamburger-button {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              width: 40px;
+              height: 40px;
+              background: transparent;
+              border: none;
+              cursor: pointer;
+              padding: 8px;
+              gap: 5px;
+            }
+            .hamburger-line {
+              width: 24px;
+              height: 2px;
+              background: var(--text-primary);
+              transition: all 0.3s ease;
+              border-radius: 2px;
+            }
+            .hamburger-line.open:nth-child(1) {
+              transform: translateY(7px) rotate(45deg);
+            }
+            .hamburger-line.open:nth-child(2) {
+              opacity: 0;
+            }
+            .hamburger-line.open:nth-child(3) {
+              transform: translateY(-7px) rotate(-45deg);
+            }
+
+            /* Overlay */
+            .nav-overlay {
+              display: block;
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: rgba(0, 0, 0, 0.5);
+              z-index: 250;
+              backdrop-filter: blur(4px);
+            }
+
+            /* Slide-out Sidebar */
+            .sidebar-nav {
+              position: fixed;
+              top: 0;
+              left: -280px;
+              width: 280px;
+              height: 100vh;
+              border-right: 1px solid var(--border);
               padding: 0;
-              overflow-y: visible;
-              overflow-x: auto;
+              overflow-y: auto;
+              z-index: 300;
+              background: var(--bg-primary);
+              transition: left 0.3s ease;
+            }
+            .sidebar-nav.open {
+              left: 0;
             }
             .sidebar-nav > div:first-child {
-              padding: 1rem 1rem 0.5rem;
+              padding: 1.5rem 0;
             }
             .sidebar-nav__header {
-              border-bottom: none;
-              padding: 0 0 0.75rem;
-              margin-bottom: 0.75rem;
-            }
-            .sidebar-nav > div:last-child {
-              display: none;
+              border-bottom: 1px solid var(--border);
+              padding: 0 1.5rem 1.5rem;
+              margin-bottom: 0;
             }
             .sidebar-nav__list {
-              display: flex;
-              flex-wrap: wrap;
-              gap: 0.5rem;
+              display: block;
             }
             .sidebar-nav__item {
-              padding: 0;
-              margin: 0;
+              padding: 0 1rem;
+              margin-bottom: 0.125rem;
+            }
+            .sidebar-nav__link {
+              padding: 0.5rem 0.75rem;
+              font-size: 0.875rem;
             }
             .sidebar-nav__section {
-              width: 100%;
-              padding: 0;
-              margin: 0.5rem 0 0;
+              padding: 0 1.5rem;
+              margin-top: 1.5rem;
+              margin-bottom: 0.5rem;
+              font-size: 0.75rem;
+            }
+            .sidebar-nav__section:first-of-type {
+              margin-top: 0;
+            }
+            .sidebar-nav > div:last-child {
+              display: block;
             }
           }
           .webflow-footer-link:hover {
@@ -563,10 +658,6 @@ export default function RootLayout({
             color: var(--accent) !important;
           }
           @media (max-width: 768px) {
-            .theme-toggle-container {
-              top: 0.5rem;
-              right: 0.5rem;
-            }
             .content-wrapper {
               padding: 1.5rem;
             }
@@ -582,16 +673,8 @@ export default function RootLayout({
             .guide-section h3 {
               font-size: 1.25rem;
             }
-            .sidebar-nav__list {
-              flex-wrap: nowrap;
-              overflow-x: auto;
-            }
-            .sidebar-nav__item {
-              flex: 0 0 auto;
-            }
-            .sidebar-nav__section {
-              flex: 0 0 auto;
-              font-size: 0.7rem;
+            .goals-grid, .prep-grid, .categories-grid {
+              grid-template-columns: 1fr;
             }
           }
         `}} />
@@ -603,34 +686,35 @@ export default function RootLayout({
                 {children}
               </div>
               <footer style={{
-                marginTop: '4rem',
+                marginTop: 'auto',
+                padding: '1.5rem',
                 paddingTop: '2rem',
                 borderTop: '1px solid var(--border)',
                 textAlign: 'center',
-                fontSize: '0.875rem',
+                fontSize: '0.75rem',
                 color: 'var(--text-tertiary)'
               }}>
-                <p style={{margin: 0}}>
-                  Brought to you by{' '}
-                  <a 
-                    href="https://webflow.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="webflow-footer-link"
-                    style={{
-                      color: 'var(--text-secondary)',
-                      textDecoration: 'none',
-                      transition: 'color 0.2s'
-                    }}
-                  >
-                    Webflow
-                  </a>
+                <p style={{margin: 0, marginBottom: '0.5rem'}}>
+                  Built with ❤️ on
                 </p>
+                <a
+                  href="https://developers.webflow.com/webflow-cloud/intro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="webflow-footer-link"
+                  style={{
+                    color: 'var(--text-secondary)',
+                    textDecoration: 'none',
+                    fontSize: '0.875rem',
+                    fontWeight: 500,
+                    transition: 'color 0.2s',
+                    display: 'inline-block'
+                  }}
+                >
+                  Webflow Cloud
+                </a>
               </footer>
             </main>
-          </div>
-          <div className="theme-toggle-container">
-            <ThemeToggle />
           </div>
         </ThemeProvider>
       </body>

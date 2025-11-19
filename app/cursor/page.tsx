@@ -4,7 +4,7 @@ export default function Cursor() {
   return (
     <>
       <section className="hero">
-        <div className="hero-tagline">Crafted for creators.</div>
+        <div className="hero-tagline">Prototyping for advanced.</div>
         <h1>Cursor</h1>
         <p className="hero-subtitle">
           A practical guide to AI-assisted development for Product Design, 
@@ -19,14 +19,15 @@ export default function Cursor() {
           <ul>
             <li><a href="#overview">Overview</a></li>
             <li><a href="#role-guides">Role-Specific Guides</a></li>
+            <li><a href="#webflow-cloud">Ship with Webflow Cloud</a></li>
             <li><a href="#common-themes">Common Themes</a></li>
           </ul>
         </nav>
       </section>
 
-      <section className="section">
+      <section className="section" style={{maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem'}}>
         <div className="guide-content">
-          <div className="guide-body">
+          <div style={{width: '100%'}}>
             <section id="overview" className="guide-section">
               <h2>Overview</h2>
               <p>
@@ -61,6 +62,65 @@ export default function Cursor() {
                     View Guide →
                   </a>
                 </div>
+              </div>
+            </section>
+
+            <section id="webflow-cloud" className="guide-section">
+              <h2>☁️ Ship with Webflow Cloud</h2>
+              <p>
+                Once you&apos;ve built your app in Cursor, deploy it to production with <strong>Webflow Cloud</strong>—a
+                serverless hosting platform that runs on Cloudflare&apos;s global edge network with sub-50ms response times.
+              </p>
+
+              <div style={{
+                marginTop: '2rem',
+                padding: '2rem',
+                background: 'var(--bg-secondary)',
+                borderLeft: '3px solid var(--accent)',
+                borderRadius: '8px'
+              }}>
+                <h3 style={{marginTop: 0}}>The Complete Workflow</h3>
+                <ol style={{marginLeft: '1.5rem', lineHeight: '1.8'}}>
+                  <li><strong>Code in Cursor</strong> — Build your app using AI-assisted development with Next.js or Astro</li>
+                  <li><strong>Push to GitHub</strong> — Commit your code and push to your repository</li>
+                  <li><strong>Deploy on Webflow Cloud</strong> — Automatic deployments across dev, staging, and production environments</li>
+                </ol>
+              </div>
+
+              <div className="track-card" style={{marginTop: '2rem'}}>
+                <h3>What You Get with Webflow Cloud</h3>
+                <ul>
+                  <li><strong>Edge-powered performance</strong> — Global CDN with Cloudflare Workers for lightning-fast delivery</li>
+                  <li><strong>Framework support</strong> — Native Next.js and Astro support, with more frameworks coming</li>
+                  <li><strong>Built-in storage</strong> — SQLite databases, Key Value Store for caching, and Object Storage for media files</li>
+                  <li><strong>GitHub integration</strong> — Automated CI/CD workflows with environment-based deployments</li>
+                  <li><strong>No infrastructure management</strong> — Focus on building, not managing servers</li>
+                </ul>
+              </div>
+
+              <div style={{
+                marginTop: '2rem',
+                padding: '1.5rem',
+                background: 'linear-gradient(135deg, #4353ff 0%, #2d3bb3 100%)',
+                borderRadius: '12px',
+                color: 'white'
+              }}>
+                <p style={{margin: 0, marginBottom: '1rem', fontSize: '1.125rem', fontWeight: 500}}>
+                  Ready to deploy?
+                </p>
+                <a
+                  href="https://developers.webflow.com/webflow-cloud/intro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: 'white',
+                    textDecoration: 'underline',
+                    fontSize: '0.9375rem',
+                    display: 'inline-block'
+                  }}
+                >
+                  Explore Webflow Cloud documentation →
+                </a>
               </div>
             </section>
 

@@ -26,20 +26,16 @@ interface PersonaCardProps {
 function PersonaCard({ role, emoji, color, description, primaryTools, prototypeTypes, skills }: PersonaCardProps) {
   return (
     <div style={{
-      border: `2px solid ${color}`,
-      borderRadius: '16px',
-      padding: '2rem',
-      marginBottom: '3rem',
-      background: 'var(--bg-primary)'
+      marginBottom: '4rem'
     }}>
       {/* Header */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
         gap: '1rem',
-        marginBottom: '1.5rem',
-        paddingBottom: '1.5rem',
-        borderBottom: `2px solid ${color}`
+        marginBottom: '2rem',
+        paddingBottom: '1rem',
+        borderBottom: `3px solid ${color}`
       }}>
         <div style={{
           fontSize: '3rem',
@@ -66,34 +62,28 @@ function PersonaCard({ role, emoji, color, description, primaryTools, prototypeT
       </div>
 
       {/* Primary Tools */}
-      <div style={{ marginBottom: '2rem' }}>
+      <div style={{ marginBottom: '3rem' }}>
         <h4 style={{
-          fontSize: '1.125rem',
-          fontWeight: 600,
+          fontSize: '1rem',
+          fontWeight: 700,
           marginBottom: '1rem',
-          color: color
+          color: color,
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em'
         }}>
-          🛠️ Primary Tools
+          Primary Tools
         </h4>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '1rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '1.5rem'
         }}>
           {primaryTools.map((tool, idx) => (
-            <div
-              key={idx}
-              style={{
-                background: 'var(--bg-secondary)',
-                padding: '1rem',
-                borderRadius: '8px',
-                border: '1px solid var(--border)'
-              }}
-            >
-              <div style={{ fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
+            <div key={idx}>
+              <div style={{ fontWeight: 700, marginBottom: '0.5rem', color: color, fontSize: '1.05rem' }}>
                 {tool.name}
               </div>
-              <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+              <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
                 {tool.use}
               </div>
             </div>
@@ -102,69 +92,79 @@ function PersonaCard({ role, emoji, color, description, primaryTools, prototypeT
       </div>
 
       {/* Prototype Types */}
-      <div style={{ marginBottom: '2rem' }}>
+      <div style={{ marginBottom: '3rem' }}>
         <h4 style={{
-          fontSize: '1.125rem',
-          fontWeight: 600,
+          fontSize: '1rem',
+          fontWeight: 700,
           marginBottom: '1rem',
-          color: color
+          color: color,
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em'
         }}>
-          📋 Prototype Types to Practice
+          Prototype Types to Practice
         </h4>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {prototypeTypes.map((type, idx) => (
-            <div
-              key={idx}
-              style={{
-                background: 'var(--bg-secondary)',
-                padding: '1.25rem',
-                borderRadius: '12px',
-                border: '1px solid var(--border)'
-              }}
-            >
-              <div style={{
-                fontWeight: 600,
-                marginBottom: '0.5rem',
-                color: color,
-                fontSize: '1rem'
-              }}>
-                {type.title}
+        <div style={{
+          background: 'var(--bg-secondary)',
+          borderRadius: '12px',
+          padding: '1.5rem',
+          border: `2px solid ${color}20`
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {prototypeTypes.map((type, idx) => (
+              <div key={idx}>
+                <div style={{
+                  fontWeight: 700,
+                  marginBottom: '0.5rem',
+                  color: color,
+                  fontSize: '1.05rem'
+                }}>
+                  {type.title}
+                </div>
+                <div style={{
+                  fontSize: '0.9rem',
+                  color: 'var(--text-secondary)',
+                  marginBottom: '0.5rem',
+                  lineHeight: '1.5'
+                }}>
+                  {type.description}
+                </div>
+                <div style={{
+                  fontSize: '0.85rem',
+                  color: 'var(--text-tertiary)',
+                  fontStyle: 'italic',
+                  paddingTop: '0.25rem'
+                }}>
+                  Example: {type.example}
+                </div>
+                {idx < prototypeTypes.length - 1 && (
+                  <div style={{
+                    height: '1px',
+                    background: 'var(--border)',
+                    marginTop: '1.5rem'
+                  }} />
+                )}
               </div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: 'var(--text-secondary)',
-                marginBottom: '0.75rem'
-              }}>
-                {type.description}
-              </div>
-              <div style={{
-                fontSize: '0.875rem',
-                color: 'var(--text-tertiary)',
-                fontStyle: 'italic',
-                paddingLeft: '1rem',
-                borderLeft: `3px solid ${color}`
-              }}>
-                Example: {type.example}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Skills Developed */}
       <div>
         <h4 style={{
-          fontSize: '1.125rem',
-          fontWeight: 600,
+          fontSize: '1rem',
+          fontWeight: 700,
           marginBottom: '1rem',
-          color: color
+          color: color,
+          textTransform: 'uppercase',
+          letterSpacing: '0.05em'
         }}>
-          💪 Skills You'll Develop
+          Skills You'll Develop
         </h4>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
-          gap: '0.5rem'
+          gap: '0.75rem'
         }}>
           {skills.map((skill, idx) => (
             <span
@@ -172,10 +172,10 @@ function PersonaCard({ role, emoji, color, description, primaryTools, prototypeT
               style={{
                 background: color,
                 color: 'white',
-                padding: '0.5rem 1rem',
-                borderRadius: '20px',
-                fontSize: '0.875rem',
-                fontWeight: 500
+                padding: '0.6rem 1.2rem',
+                borderRadius: '6px',
+                fontSize: '0.9rem',
+                fontWeight: 600
               }}
             >
               {skill}
@@ -239,7 +239,8 @@ export default function PrototypingPersonas() {
         { name: 'Figma Make', use: 'Rapidly prototype UI components and interactions with AI assistance' },
         { name: 'Cursor', use: 'Build high-fidelity prototypes with real interactions and animations' },
         { name: 'Webflow', use: 'Create responsive, production-ready prototypes without code' },
-        { name: 'Claude / ChatGPT', use: 'Generate design patterns, copy variations, and component logic' }
+        { name: 'Claude / ChatGPT', use: 'Generate design patterns, copy variations, and component logic' },
+        { name: 'Loom', use: 'Share design thinking and walkthrough prototypes with stakeholders' }
       ],
       prototypeTypes: [
         {
@@ -280,7 +281,8 @@ export default function PrototypingPersonas() {
         { name: 'Cursor', use: 'Build data visualization prototypes and ML model interfaces' },
         { name: 'Hex', use: 'Create interactive notebooks with AI-assisted SQL and Python' },
         { name: 'Claude / ChatGPT', use: 'Generate code for data processing, analysis, and visualization' },
-        { name: 'Jupyter / Observable', use: 'Prototype data explorations and statistical analyses' }
+        { name: 'Jupyter / Observable', use: 'Prototype data explorations and statistical analyses' },
+        { name: 'Loom', use: 'Present insights and explain model behavior to non-technical stakeholders' }
       ],
       prototypeTypes: [
         {
@@ -362,7 +364,8 @@ export default function PrototypingPersonas() {
         { name: 'Hex', use: 'Create data transformation prototypes and analytics workflows' },
         { name: 'Cursor', use: 'Build internal tools and data visualization interfaces' },
         { name: 'Claude / ChatGPT', use: 'Generate SQL queries, dbt models, and documentation' },
-        { name: 'dbt Cloud', use: 'Prototype data transformations and test model logic' }
+        { name: 'dbt Cloud', use: 'Prototype data transformations and test model logic' },
+        { name: 'Loom', use: 'Document data models and explain pipeline architecture to stakeholders' }
       ],
       prototypeTypes: [
         {
@@ -401,9 +404,9 @@ export default function PrototypingPersonas() {
       description: 'Create compelling campaign experiences and test messaging strategies',
       primaryTools: [
         { name: 'Webflow', use: 'Build landing pages and campaign microsites' },
-        { name: 'Figma Make', use: 'Design email templates and ad creative variations' },
         { name: 'Cursor', use: 'Prototype interactive marketing experiences and calculators' },
-        { name: 'Claude / ChatGPT', use: 'Generate copy variations, campaign briefs, and content ideas' }
+        { name: 'Claude / ChatGPT', use: 'Generate copy variations, campaign briefs, and content ideas' },
+        { name: 'Loom', use: 'Create campaign walkthroughs and get stakeholder feedback on creative concepts' }
       ],
       prototypeTypes: [
         {
@@ -440,7 +443,7 @@ export default function PrototypingPersonas() {
   return (
     <>
       <section className="hero">
-        <div className="hero-tagline">Know your role. Build with purpose.</div>
+        <div className="hero-tagline">Personalize your toolkit.</div>
         <h1>Builder Personas</h1>
         <p className="hero-subtitle">
           A practical guide to prototyping across different roles — from Product Managers to Marketing.
@@ -454,8 +457,6 @@ export default function PrototypingPersonas() {
       </section>
 
       <section className="section" style={{maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem'}}>
-        <div className="guide-content">
-          <div className="guide-body">
 
             {/* Overview */}
             <section id="overview" className="guide-section">
@@ -672,8 +673,6 @@ export default function PrototypingPersonas() {
               </div>
             </section>
 
-          </div>
-        </div>
       </section>
     </>
   )

@@ -22,15 +22,11 @@ export default function AIProductOrgMaturityModel() {
   return (
     <>
       <section className="hero">
-        <div className="hero-tagline">Crafted for creators.</div>
+        <div className="hero-tagline">Building the builders.</div>
         <h1>AI-native Org Evolution</h1>
         <p className="hero-subtitle">
-          A framework for AI-native product organizations. Assess and advance your capability
-          to build, experiment, and learn using AI-powered tools.
+          Assess and advance your organization's capability to build, experiment, and learn using AI.
         </p>
-        <div style={{marginTop: '2rem', fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: '1.6'}}>
-          Last Updated: November, 2025
-        </div>
       </section>
 
       {/* Maturity Model Matrix Infographic - Full width */}
@@ -229,9 +225,9 @@ export default function AIProductOrgMaturityModel() {
         <TableOfContents items={tocItems} />
       </section>
 
-      <section className="section">
+      <section className="section" style={{maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem'}}>
         <div className="guide-content">
-          <div className="guide-body">
+          <div style={{width: '100%'}}>
             <section id="overview" className="guide-section">
               <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>01</span>Overview</h2>
               <p>

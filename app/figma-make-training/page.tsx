@@ -20,7 +20,7 @@ export default function FigmaMakeTraining() {
   return (
     <>
       <section className="hero">
-        <div className="hero-tagline">Vibe Coding Beginners</div>
+        <div className="hero-tagline">Prototyping for beginners.</div>
         <h1>Figma Make</h1>
         <p className="hero-subtitle">
           A practical guide to AI-assisted prototyping for Product Design, 
@@ -71,9 +71,9 @@ export default function FigmaMakeTraining() {
         <TableOfContents items={tocItems} />
       </section>
 
-      <section className="section">
+      <section className="section" style={{maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem'}}>
         <div className="guide-content">
-          <div className="guide-body">
+          <div style={{width: '100%'}}>
             <section id="purpose" className="guide-section">
               <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>01</span>Purpose</h2>
               <p>

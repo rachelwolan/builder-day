@@ -26,7 +26,7 @@ export default function Home() {
           and Marketing teams.
         </p>
         <div style={{marginTop: '2rem', fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: '1.6'}}>
-          Written By: Rachel Wolan, Chief Product Officer @ Webflow<br />
+          Written By: Rachel Wolan, Chief Product Officer @ <a href="https://webflow.com" target="_blank" rel="noopener noreferrer" style={{color: 'var(--accent)', textDecoration: 'none', fontWeight: 500}}>Webflow</a><br />
           Last Updated: November, 2025
         </div>
       </section>

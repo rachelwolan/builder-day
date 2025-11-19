@@ -13,12 +13,16 @@ const tocItems = [
   { href: '#builder-mindset', label: '08 Builder Mindset' },
 ]
 
+// Use R2 storage in production, public directory in development
+const isProduction = process.env.NODE_ENV === 'production'
+const videoBasePath = isProduction ? '/builder-day/api/assets' : '/builder-day'
+
 export default function Prototyping101() {
 
   return (
     <>
       <section className="hero">
-        <div className="hero-tagline">Crafted for creators.</div>
+        <div className="hero-tagline">Prototype with purpose.</div>
         <h1>Prototyping 101</h1>
         <p className="hero-subtitle">
           A practical guide to choosing the right prototype fidelity for your objectives 
@@ -53,7 +57,7 @@ export default function Prototyping101() {
                 height: '100%'
               }}
             >
-              <source src="/builder-day/building-collaborative-builder-culture-part1.mp4" type="video/mp4" />
+              <source src={`${videoBasePath}/building-collaborative-builder-culture-part1.mp4`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -71,7 +75,7 @@ export default function Prototyping101() {
 
       <section className="section" style={{maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem'}}>
         <div className="guide-content">
-          <div className="guide-body">
+          <div style={{width: '100%'}}>
             <section id="overview" className="guide-section">
               <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>01</span>Overview</h2>
               <p>
@@ -162,10 +166,13 @@ export default function Prototyping101() {
                     video.playbackRate = 1.25;
                   }}
                 >
-                  <source src="/builder-day/Thoughts on Prototyping with AI Tools.mp4" type="video/mp4" />
+                  <source src={`${videoBasePath}/building-collaborative-builder-culture-part2.mp4`} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
+              <p style={{fontSize: '0.875rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '0.5rem'}}>
+                <strong>Video:</strong> Building a Collaborative Builder Culture - Part 2
+              </p>
             </div>
 
             <section id="common-traps" className="guide-section">

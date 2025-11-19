@@ -13,6 +13,16 @@ interface TableOfContentsProps {
 
 export default function TableOfContents({ items }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>('')
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const sections = items.map((item) => {
@@ -117,7 +127,7 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
         style={{
           maxWidth: '1400px',
           margin: '0 auto',
-          padding: '0 2rem'
+          padding: isMobile ? '0 1rem' : '0 2rem'
         }}
       >
         <div
@@ -135,10 +145,8 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
         <div
           style={{
             display: 'flex',
+            flexWrap: 'wrap',
             gap: '0.5rem',
-            overflowX: 'auto',
-            scrollbarWidth: 'thin',
-            WebkitOverflowScrolling: 'touch',
             paddingBottom: '0.25rem'
           }}
         >
@@ -168,18 +176,16 @@ export default function TableOfContents({ items }: TableOfContentsProps) {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  padding: '0.5rem 1rem',
-                  fontSize: '0.875rem',
+                  padding: isMobile ? '0.4rem 0.75rem' : '0.5rem 1rem',
+                  fontSize: isMobile ? '0.8125rem' : '0.875rem',
                   fontWeight: '500',
-                  whiteSpace: 'nowrap',
                   borderRadius: '9999px',
                   border: isActive ? '2px solid var(--accent, #3b82f6)' : '1px solid var(--border-color, #e5e7eb)',
                   backgroundColor: isActive ? 'var(--accent-bg, #eff6ff)' : 'transparent',
                   color: isActive ? 'var(--accent, #3b82f6)' : 'var(--text-secondary, #4b5563)',
                   textDecoration: 'none',
                   cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  flexShrink: 0
+                  transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive) {
