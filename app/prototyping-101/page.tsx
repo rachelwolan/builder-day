@@ -53,7 +53,7 @@ export default function Prototyping101() {
                 height: '100%'
               }}
             >
-              <source src="/builder-day/api/assets/building-collaborative-builder-culture-part1.mp4" type="video/mp4" />
+              <source src="/builder-day/building-collaborative-builder-culture-part1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -62,6 +62,11 @@ export default function Prototyping101() {
             <strong>Featuring:</strong> Kev Wong, VP, Product and Content Design at <a href="https://webflow.com" target="_blank" rel="noopener noreferrer" style={{color: 'var(--accent)'}}>Webflow</a>
           </p>
         </div>
+      </section>
+
+      {/* Table of Contents */}
+      <section style={{padding: '2rem', maxWidth: '1200px', margin: '0 auto'}}>
+        <TableOfContents items={tocItems} />
       </section>
 
       <section className="section" style={{maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem'}}>
@@ -157,7 +162,7 @@ export default function Prototyping101() {
                     video.playbackRate = 1.25;
                   }}
                 >
-                  <source src="/builder-day/api/assets/Thoughts on Prototyping with AI Tools.mp4" type="video/mp4" />
+                  <source src="/builder-day/Thoughts on Prototyping with AI Tools.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -334,7 +339,6 @@ export default function Prototyping101() {
               </p>
             </section>
           </div>
-          <TableOfContents items={tocItems} />
         </div>
       </section>
     </>

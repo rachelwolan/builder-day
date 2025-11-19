@@ -66,6 +66,11 @@ export default function FigmaMakeTraining() {
         </div>
       </section>
 
+      {/* Table of Contents */}
+      <section style={{padding: '2rem', maxWidth: '1200px', margin: '0 auto'}}>
+        <TableOfContents items={tocItems} />
+      </section>
+
       <section className="section">
         <div className="guide-content">
           <div className="guide-body">
@@ -289,8 +294,6 @@ export default function FigmaMakeTraining() {
             </section>
 
           </div>
-
-          <TableOfContents items={tocItems} />
         </div>
       </section>
     </>

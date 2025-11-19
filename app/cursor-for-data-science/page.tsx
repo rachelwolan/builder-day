@@ -344,7 +344,7 @@ export default function CursorForDataScience() {
               <div className="resource-list">
                 <div className="resource-item">
                   <h4>
-                    <a href="/builder-day-in-a-box/cursor-for-product-managers">
+                    <a href="/cursor-for-product-managers">
                       Cursor for Product Managers
                     </a>
                   </h4>
@@ -353,7 +353,7 @@ export default function CursorForDataScience() {
 
                 <div className="resource-item">
                   <h4>
-                    <a href="/builder-day-in-a-box/cursor-for-designers">
+                    <a href="/cursor-for-designers">
                       Cursor for Designers
                     </a>
                   </h4>
@@ -362,7 +362,7 @@ export default function CursorForDataScience() {
 
                 <div className="resource-item">
                   <h4>
-                    <a href="/builder-day-in-a-box/figma-make-training">
+                    <a href="/figma-make-training">
                       Figma Make Training
                     </a>
                   </h4>

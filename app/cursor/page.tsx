@@ -12,6 +12,18 @@ export default function Cursor() {
         </p>
       </section>
 
+      {/* Table of Contents */}
+      <section style={{padding: '2rem', maxWidth: '1200px', margin: '0 auto'}}>
+        <nav className="table-of-contents">
+          <h3>Table of Contents</h3>
+          <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#role-guides">Role-Specific Guides</a></li>
+            <li><a href="#common-themes">Common Themes</a></li>
+          </ul>
+        </nav>
+      </section>
+
       <section className="section">
         <div className="guide-content">
           <div className="guide-body">
@@ -26,26 +38,26 @@ export default function Cursor() {
             <section id="role-guides" className="guide-section">
               <h2>Role-Specific Guides</h2>
               <div className="goals-grid" style={{marginTop: '2rem'}}>
-                <div className="goal-card" style={{cursor: 'pointer'}} onClick={() => window.location.href = '/builder-day-in-a-box/cursor-for-product-managers'}>
+                <div className="goal-card" style={{cursor: 'pointer'}} onClick={() => window.location.href = '/cursor-for-product-managers'}>
                   <h3>📋 Cursor for Product Managers</h3>
                   <p>Learn how to use Cursor as a builder&apos;s tool to plan, analyze, and ship faster. Create specs, build prototypes, and explore codebases with AI assistance.</p>
-                  <a href="/builder-day-in-a-box/cursor-for-product-managers" style={{color: 'var(--accent)', fontWeight: 500, marginTop: '1rem', display: 'inline-block'}}>
+                  <a href="/cursor-for-product-managers" style={{color: 'var(--accent)', fontWeight: 500, marginTop: '1rem', display: 'inline-block'}}>
                     View Guide →
                   </a>
                 </div>
 
-                <div className="goal-card" style={{cursor: 'pointer'}} onClick={() => window.location.href = '/builder-day-in-a-box/cursor-for-designers'}>
+                <div className="goal-card" style={{cursor: 'pointer'}} onClick={() => window.location.href = '/cursor-for-designers'}>
                   <h3>🎨 Cursor for Designers</h3>
                   <p>Turn designs into live prototypes and bridge design–dev workflows. Import Figma frames, generate code, and create interactive experiences.</p>
-                  <a href="/builder-day-in-a-box/cursor-for-designers" style={{color: 'var(--accent)', fontWeight: 500, marginTop: '1rem', display: 'inline-block'}}>
+                  <a href="/cursor-for-designers" style={{color: 'var(--accent)', fontWeight: 500, marginTop: '1rem', display: 'inline-block'}}>
                     View Guide →
                   </a>
                 </div>
 
-                <div className="goal-card" style={{cursor: 'pointer'}} onClick={() => window.location.href = '/builder-day-in-a-box/cursor-for-data-science'}>
+                <div className="goal-card" style={{cursor: 'pointer'}} onClick={() => window.location.href = '/cursor-for-data-science'}>
                   <h3>📊 Cursor for Data Science</h3>
                   <p>Accelerate data science and engineering workflows. Work with notebooks, databases, dbt, and data pipelines using AI-assisted development.</p>
-                  <a href="/builder-day-in-a-box/cursor-for-data-science" style={{color: 'var(--accent)', fontWeight: 500, marginTop: '1rem', display: 'inline-block'}}>
+                  <a href="/cursor-for-data-science" style={{color: 'var(--accent)', fontWeight: 500, marginTop: '1rem', display: 'inline-block'}}>
                     View Guide →
                   </a>
                 </div>
@@ -101,15 +113,6 @@ export default function Cursor() {
               </div>
             </section>
           </div>
-
-          <nav className="table-of-contents">
-            <h3>Table of Contents</h3>
-            <ul>
-              <li><a href="#overview">Overview</a></li>
-              <li><a href="#role-guides">Role-Specific Guides</a></li>
-              <li><a href="#common-themes">Common Themes</a></li>
-            </ul>
-          </nav>
         </div>
       </section>
     </>

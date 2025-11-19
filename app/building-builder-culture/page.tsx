@@ -386,7 +386,7 @@ export default function BuildingBuilderCulture() {
                 </div>
 
                 <p style={{marginTop: '2rem'}}>
-                  <a href="/builder-day-in-a-box/product-artifacts" style={{color: '#4353ff', fontWeight: 500}}>
+                  <a href="/product-artifacts" style={{color: '#4353ff', fontWeight: 500}}>
                     → View the complete Product Artifacts guide for more detailed prototyping guidance
                   </a>
                 </p>

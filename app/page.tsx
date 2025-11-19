@@ -31,9 +31,43 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      {/* Cursor Adoption Chart */}
+      <section style={{padding: '0 2rem 4rem', width: '100%', maxWidth: '100vw'}}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          width: '100%'
+        }}>
+          <img
+            src="/builder-day/cursor-adoption-chart.png"
+            alt="Cursor Adoption in the Webflow Product Org"
+            style={{
+              width: '100%',
+              height: 'auto',
+              borderRadius: '12px',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+              marginBottom: '1rem'
+            }}
+          />
+          <p style={{
+            fontSize: '0.875rem',
+            color: 'var(--text-secondary)',
+            textAlign: 'center',
+            fontStyle: 'italic'
+          }}>
+            Start small, and then build on your success.
+          </p>
+        </div>
+      </section>
+
+      {/* Table of Contents */}
+      <section style={{padding: '2rem', maxWidth: '1200px', margin: '0 auto'}}>
+        <TableOfContents items={tocItems} />
+      </section>
+
+      <section className="section" style={{maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem'}}>
         <div className="guide-content">
-          <div className="guide-body">
+          <div style={{width: '100%'}}>
               <section id="overview" className="guide-section">
                 <h2><span style={{color: 'var(--accent)', fontWeight: 600, marginRight: '0.5rem'}}>01</span>Overview</h2>
                 <p>
@@ -179,9 +213,9 @@ export default function Home() {
                       <li>Data analysis platform tutorials</li>
                     </ul>
                     <p>
-                      <a href="/builder-day-in-a-box/figma-make-training">→ Figma Make</a> · 
-                      <a href="/builder-day-in-a-box/cursor"> Cursor</a> · 
-                      <a href="/builder-day-in-a-box/webflow-app-gen"> Webflow App Gen</a>
+                      <a href="/figma-make-training">→ Figma Make</a> · 
+                      <a href="/cursor"> Cursor</a> · 
+                      <a href="/webflow-app-gen"> Webflow App Gen</a>
                     </p>
 
                     <h3 style={{marginTop: '3rem'}}>Pre-Work</h3>
@@ -308,7 +342,6 @@ export default function Home() {
                     </div>
               </section>
           </div>
-          <TableOfContents items={tocItems} />
         </div>
       </section>
     </>

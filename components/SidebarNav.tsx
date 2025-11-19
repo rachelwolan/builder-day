@@ -3,33 +3,35 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const navItems = [
-  { href: '/', label: 'Builder Day in a Box' }
+const learningsItems = [
+  { href: '/', label: 'Builder Day in a Box' },
+  { href: '/prototyping-personas', label: 'Builder Personas' },
+  {
+    href: '/ai-native-org',
+    label: 'AI-native Org Evolution'
+  },
+  {
+    href: '/webflows-learnings',
+    label: 'Webflow\'s Builder Day'
+  },
 ]
 
 const prototypingItems = [
-  { 
-    href: '/builder-day-in-a-box/prototyping-101', 
-    label: 'Prototyping 101' 
+  {
+    href: '/prototyping-101',
+    label: 'Prototyping 101'
   },
-  { 
-    href: '/builder-day-in-a-box/figma-make-training', 
-    label: 'Figma Make' 
+  {
+    href: '/figma-make-training',
+    label: 'Figma Make'
   },
-  { 
-    href: '/builder-day-in-a-box/cursor', 
-    label: 'Cursor' 
+  {
+    href: '/cursor',
+    label: 'Cursor'
   },
-  { 
-    href: '/builder-day-in-a-box/webflow-app-gen', 
-    label: 'Webflow App Gen' 
-  },
-]
-
-const frameworkItems = [
-  { 
-    href: '/builder-day-in-a-box/ai-product-org-maturity-model', 
-    label: 'AI-Native Evolution' 
+  {
+    href: '/webflow-app-gen',
+    label: 'Webflow'
   },
 ]
 
@@ -69,13 +71,11 @@ export default function SidebarNav() {
           </Link>
         </div>
         <ul className="sidebar-nav__list">
-        {navItems.map(renderNavItem)}
-        
+        <li className="sidebar-nav__section">Learnings</li>
+        {learningsItems.map(renderNavItem)}
+
         <li className="sidebar-nav__section">Prototyping</li>
         {prototypingItems.map(renderNavItem)}
-        
-        <li className="sidebar-nav__section">Frameworks</li>
-        {frameworkItems.map(renderNavItem)}
         </ul>
       </div>
       <div style={{

@@ -340,7 +340,7 @@ export default function CursorForDesigners() {
               <div className="resource-list">
                 <div className="resource-item">
                   <h4>
-                    <a href="/builder-day-in-a-box/cursor-for-product-managers">
+                    <a href="/cursor-for-product-managers">
                       Cursor for Product Managers
                     </a>
                   </h4>
@@ -349,7 +349,7 @@ export default function CursorForDesigners() {
 
                 <div className="resource-item">
                   <h4>
-                    <a href="/builder-day-in-a-box/cursor-for-data-science">
+                    <a href="/cursor-for-data-science">
                       Cursor for Data Science
                     </a>
                   </h4>
@@ -358,7 +358,7 @@ export default function CursorForDesigners() {
 
                 <div className="resource-item">
                   <h4>
-                    <a href="/builder-day-in-a-box/figma-make-training">
+                    <a href="/figma-make-training">
                       Figma Make Training
                     </a>
                   </h4>
@@ -367,7 +367,7 @@ export default function CursorForDesigners() {
 
                 <div className="resource-item">
                   <h4>
-                    <a href="/builder-day-in-a-box/prototyping-101">
+                    <a href="/prototyping-101">
                       Prototyping 101
                     </a>
                   </h4>

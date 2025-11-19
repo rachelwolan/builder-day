@@ -3,7 +3,8 @@ import { getCloudflareContext } from '@opennextjs/cloudflare';
 
 /**
  * API route to serve assets from R2 bucket
- * Example: /api/assets/building-collaborative-builder-culture.mp4
+ * Note: Currently videos are served from public directory
+ * This route can be used for R2-hosted assets in production
  */
 export async function GET(
   request: NextRequest,
@@ -15,7 +16,7 @@ export async function GET(
     const key = path.join('/');
 
     // Get object from R2
-    const object = await env.R2.get(key);
+    const object = await env.WEBFLOW_CLOUD_MEDIA.get(key);
 
     if (!object) {
       return new Response('File not found', { status: 404 });
@@ -36,5 +37,3 @@ export async function GET(
     return new Response('Internal Server Error', { status: 500 });
   }
 }
-
-export const runtime = 'edge';

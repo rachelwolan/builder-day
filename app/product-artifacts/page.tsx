@@ -37,7 +37,7 @@ export default function ProductArtifacts() {
                   height: '100%'
                 }}
               >
-                <source src="/builder-day/api/assets/building-collaborative-builder-culture.mp4" type="video/mp4" />
+                <source src="/builder-day/building-collaborative-builder-culture.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

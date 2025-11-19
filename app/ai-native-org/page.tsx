@@ -13,6 +13,8 @@ export default function AIProductOrgMaturityModel() {
     { href: '#dimension-3', label: 'Tool Fluency & Infrastructure' },
     { href: '#dimension-4', label: 'Cross-Functional Builder Culture' },
     { href: '#dimension-5', label: 'Learning & Experimentation' },
+    { href: '#dimension-6', label: 'Career Ladder' },
+    { href: '#dimension-7', label: 'Interviewing' },
     { href: '#assessment', label: 'Assessment Tool' },
     { href: '#roadmap', label: 'Roadmap' },
   ]
@@ -21,27 +23,28 @@ export default function AIProductOrgMaturityModel() {
     <>
       <section className="hero">
         <div className="hero-tagline">Crafted for creators.</div>
-        <h1>AI-Native Evolution</h1>
+        <h1>AI-native Org Evolution</h1>
         <p className="hero-subtitle">
           A framework for AI-native product organizations. Assess and advance your capability
           to build, experiment, and learn using AI-powered tools.
         </p>
         <div style={{marginTop: '2rem', fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: '1.6'}}>
-          <strong>For:</strong> Product Management, Product Design, Data Science, and User Research Teams<br />
           Last Updated: November, 2025
         </div>
       </section>
 
       {/* Maturity Model Matrix Infographic - Full width */}
       <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto 4rem',
+        width: '100%',
+        margin: '0 0 4rem',
         padding: '0 2rem',
-        overflowX: 'auto',
-        borderRadius: '12px',
-        border: '1px solid var(--border)',
-        background: 'var(--bg-primary)'
+        overflowX: 'auto'
       }}>
+        <div style={{
+          borderRadius: '12px',
+          border: '1px solid var(--border)',
+          background: 'var(--bg-primary)'
+        }}>
                 <div style={{
                   minWidth: '1000px',
                   display: 'grid',
@@ -160,6 +163,28 @@ export default function AIProductOrgMaturityModel() {
                         'Continuous experimentation, optimized',
                         'Learning-driven innovation'
                       ]
+                    },
+                    {
+                      name: 'Career Ladder',
+                      icon: '📈',
+                      cells: [
+                        'No AI skills in career frameworks',
+                        'AI mentioned but not defined',
+                        'Clear AI competencies per level',
+                        'AI fluency tied to advancement',
+                        'AI leadership expected at senior levels'
+                      ]
+                    },
+                    {
+                      name: 'Interviewing',
+                      icon: '💼',
+                      cells: [
+                        'No AI-related interview questions',
+                        'Basic AI awareness assessed',
+                        'AI tool proficiency evaluated',
+                        'AI problem-solving emphasized',
+                        'AI innovation and leadership assessed'
+                      ]
                     }
                   ].map((dimension, dimIdx) => (
                     <React.Fragment key={dimension.name}>
@@ -168,7 +193,7 @@ export default function AIProductOrgMaturityModel() {
                         padding: '1rem',
                         background: 'var(--bg-secondary)',
                         borderRight: '1px solid var(--border)',
-                        borderBottom: dimIdx < 4 ? '1px solid var(--border)' : 'none',
+                        borderBottom: dimIdx < 6 ? '1px solid var(--border)' : 'none',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.5rem',
@@ -185,7 +210,7 @@ export default function AIProductOrgMaturityModel() {
                           padding: '1rem',
                           background: cellIdx % 2 === 0 ? 'var(--bg-primary)' : 'var(--bg-secondary)',
                           borderRight: cellIdx < 4 ? '1px solid var(--border)' : 'none',
-                          borderBottom: dimIdx < 4 ? '1px solid var(--border)' : 'none',
+                          borderBottom: dimIdx < 6 ? '1px solid var(--border)' : 'none',
                           fontSize: '0.8125rem',
                           lineHeight: '1.5',
                           color: 'var(--text-primary)'
@@ -196,7 +221,13 @@ export default function AIProductOrgMaturityModel() {
                     </React.Fragment>
                   ))}
                 </div>
+        </div>
       </div>
+
+      {/* Table of Contents */}
+      <section style={{padding: '2rem', maxWidth: '1200px', margin: '0 auto'}}>
+        <TableOfContents items={tocItems} />
+      </section>
 
       <section className="section">
         <div className="guide-content">
@@ -1003,8 +1034,6 @@ export default function AIProductOrgMaturityModel() {
               </div>
             </section>
           </div>
-
-          <TableOfContents items={tocItems} />
         </div>
       </section>
     </>
