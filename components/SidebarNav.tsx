@@ -24,12 +24,12 @@ const prototypingItems = [
     label: 'Prototyping 101'
   },
   {
-    href: '/figma-make-training',
-    label: 'Figma Make'
-  },
-  {
     href: '/cursor',
     label: 'Cursor'
+  },
+  {
+    href: '/figma-make-training',
+    label: 'Figma Make'
   },
   {
     href: '/webflow',
