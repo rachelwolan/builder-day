@@ -39,3 +39,8 @@ next-env.d.ts
 .open-next/
 .wrangler/
 wrangler.json
+
+# large media files (to be uploaded to R2 instead)
+public/*.mp4
+public/*.mov
+public/*.avi
