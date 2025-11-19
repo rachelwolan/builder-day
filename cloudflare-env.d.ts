@@ -1,4 +1,4 @@
 interface CloudflareEnv {
-  // Add your environment variables here
-  // Example: VARIABLE_NAME: string;
+  // R2 Object Storage
+  WEBFLOW_CLOUD_MEDIA: R2Bucket;
 }

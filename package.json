@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "upload-r2": "tsx scripts/upload-to-r2.ts"
   },
   "dependencies": {
     "next": "^15.2.5",
@@ -15,12 +16,14 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.713.0",
     "@opennextjs/cloudflare": "^1.6.5",
     "@types/node": "20.19.25",
     "@types/react": "18.3.26",
     "@types/react-dom": "^18.3.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^15.2.5",
+    "tsx": "^4.19.2",
     "typescript": "5.9.3",
     "wrangler": "^4.47.0"
   }

@@ -53,7 +53,7 @@ export default function Prototyping101() {
                 height: '100%'
               }}
             >
-              <source src="/building-collaborative-builder-culture-part1.mp4" type="video/mp4" />
+              <source src="/builder-day/api/assets/building-collaborative-builder-culture-part1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -157,7 +157,7 @@ export default function Prototyping101() {
                     video.playbackRate = 1.25;
                   }}
                 >
-                  <source src="/Thoughts on Prototyping with AI Tools.mp4" type="video/mp4" />
+                  <source src="/builder-day/api/assets/Thoughts on Prototyping with AI Tools.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
