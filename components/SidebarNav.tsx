@@ -35,6 +35,10 @@ const prototypingItems = [
     href: '/webflow',
     label: 'Webflow'
   },
+  {
+    href: '/prototype-gallery',
+    label: 'Prototype Gallery'
+  },
 ]
 
 export default function SidebarNav() {
